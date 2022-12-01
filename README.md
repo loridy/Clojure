@@ -67,9 +67,37 @@
     * Java methods are not Clojure functions
     * cannot store them or pass them as arguements
     * can wrap them in functions when necessary
-
+* Excercise
+  * (identity 2) : ((fn [x] x) 2)
+  * (defn always-thing [& args] 100): always return 11
 
 ### Sequential Collections
+* Vectors
+  * indexed
+    * eg. (get ["abc" false 99] 0) -> "abc"; (get ["abc" false 99] 1) -> false
+  * count
+    * eg. (count [1 2 3]) -> 3
+  * constructing
+    * eg. (vector 1 2 3) -> [1 2 3]
+  * adding elements
+    * eg. (conj [1 2 3] 4 5 6) -> [1 2 3 4 5 6]
+  * Immutability
+    * (def v [1 2 3])
+    * (conj v 4 5 6) -> [1 2 3 4 5 6]
+    * v -> [1 2 3]
+* List
+  * construct
+    * (def card '(10 :ace :Jack 9))
+  * List are not indexed; must use "first" and "rest" to get access to items
+  * adding elemetns
+    * items are added at the front
+    * eg. (conj cards :queen) -> (:queen 10 :ace :jack 9)
+  * Stack acess
+    * can be used as stack with peak and pop
+    * (def stack '(:a :b))
+    * (peek stack) -> :a
+    * (pop stack) -> (:b)
+
 
 ### Hashed Collections
 
