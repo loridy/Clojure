@@ -3,6 +3,7 @@
 
 ## [Learn Clojure](https://clojure.org/guides/learn/clojure)
 
+### [Syntax](https://clojure.org/guides/learn/syntax)
 * Literals
   * Numeric types
   * Character types
@@ -25,7 +26,8 @@
     * eg. (def x 7) 
   * println/print vs prn/pr
 
-### [Syntax](https://clojure.org/guides/learn/syntax)
+
+### [Functions](https://clojure.org/guides/learn/functions)
 * Creating Functions
   * defn: define a function
     * structure: (defn function_name [parameter] (body))
@@ -44,8 +46,28 @@
   * Element to Vector
     * (fn [x] ([x]))
     * #(vector %)
+* Applying Functions
+  * apply
+    * (apply f '(1 2 3)) or (apply f 1 2 '(3)); the final argument must be a sequence
+    * eg. (defn plot [shape coords] (apply plotxy shape coords))
+* Local and Closures
+  * let (local scope)
+    * syntax: (let [name value] (code that uses name))
+    * eg. (let [x 1 y 2] (+ x y))
+  * Closures (fn)
+    * can capture values beyond the lexical scope
+* Java Interop
+  * Invoking Java code
+    * new Widget("foo") : (Widget. "foo")
+    * rnd.nextInt() : (.nextInt rnd)
+    * object.field : (.-field object)
+    * Math.sqrt(25) : (Math/sqrt 25)
+    * Math.PI : Math/PI
+  * Java Methos vs Functions
+    * Java methods are not Clojure functions
+    * cannot store them or pass them as arguements
+    * can wrap them in functions when necessary
 
-### [Functions](https://clojure.org/guides/learn/functions)
 
 ### Sequential Collections
 
