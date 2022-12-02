@@ -30,7 +30,7 @@
 ### [Functions](https://clojure.org/guides/learn/functions)
 * Creating Functions
   * defn: define a function
-    * structure: (defn function_name [parameter] (body))
+    * syntax: (defn function_name [parameter] (body))
     * (defn greet [name] (string "Hello," name))
   * Multi-arity functions (like construtor in JAVA)
     * use () to include every 
@@ -39,7 +39,7 @@
     * if there are more than two parameters given, remaining args will pass to last parameter and forms a list
   * Anonymous Functions
     * fn: cannot be reused; usually passed to other function
-    * structure: (fn [parameter] (body))
+    * syntax: (fn [parameter] (body))
   * Anonymous function syntax
     * shorter structure for anonymous functions
     * eg. #(+ 1 %), #(+ %1 %2) : % for a parameter; %1 %2 ... for multiple parameters; %& for remaining parameters
@@ -100,7 +100,61 @@
 
 
 ### Hashed Collections
-
+* Sets
+  * syntax: (def players #{"a" "b"})
+  * add to set
+    * conj
+  * remove from set
+    * disj
+  * check for containment
+    * {contains? players "d"}
+  * (conj (sorted-set) "d" "c" "b" "a") -> #{"a" "b" "c" "d"}
+    * A custom comparator can also be used with sorted-set-by 
+  * into: putting one collection into another
+    * (def new-players ["d" "e"])
+    * (into players new-players) -> #{"a" "b" "d" "e"}
+    * return the same type as its first arugment
+* Maps
+  * syntax: (def scores {"Fred" 1400, "Bob" 1240, "Angela" 1024}) // comma is optional since clojure regards it as whitespace
+  * add new key-value pairs
+    * (assoc scores "Sally" 0)
+  * remove key-value pairs
+    * (dissoc scores "Bob")
+  * lookup by key
+    * (get scores "Fred")
+  * loolup with default
+    * (get scores "Fred" 0): return default if key not found
+  * Check containment
+    * (contains? scores "Fred")
+    * (find scores "Fred")
+  * Checking keys/values
+    * (keys scores)
+    * (vals scores)
+  * Build a map
+    * (def players #{"Alice" "Bob" "Kelly"})
+    * (zipmap players (repeat 0))
+  * Combine maps
+    * (merge-with + scores {"Fred" 1000})
+  * Sorted map
+    * (sorted-map "Bravo" 204 "Alfa" 35 "Sigma" 99 "Charlie" 100): sorted by key
+* Representing application domain information
+  * Field accessor
+    * (get person :occupation) == (person :occupation) == (:occupation person)
+    * default value: (:age person 18)
+  * Update field
+    * accos
+  * Remove filed
+    * dissoc
+  * Nested entity
+    * (def company {:name WidgetGo :address {:street "St" :city "ct"}})
+    * (get-in company [:address :city])
+  * Records (like constructor)
+    * defined with the list of field names for record instances
+    * (defrecord Person [first-name last-name age occupation])
+    * (def kelly (->Person "Kelly" "Keen" 32 "Programmer"))
+  
+  
 ### Flow Control
+
 
 ### Namespaces
