@@ -154,7 +154,40 @@
     * (def kelly (->Person "Kelly" "Keen" 32 "Programmer"))
   
   
-### Flow Control
-
+### [Flow Control](https://clojure.org/guides/learn/flow)
+* Flow Control Expressions
+  * If
+    * (str "2 is " (if (even? 2) "even" "odd"))
+  * Truth
+    * only false and nil are regarded as false
+    * (if false :truthy :falthy) -> :falthy
+  * if and do
+    * (if (even? 5) (do (println "even") true) (do (println "odd") false))
+  * when
+    * (when (neg? x) (throw (RuntimeException. (str "x must be positive: " x))))
+  * cond
+    * each test is evaluated in order; return the first true test
+    * (let [x 5] (cond (< x 2) "x is less than 2" (< x 10) "x is less than 10"))
+  * cond and else
+    * if no test is true, return nil
+    * (cond (< x 2) "x is less than 2" (< x 10) "x is less than 10" :else "x is greater than 10")
+  * case
+    * done in constant time
+    * will throw an exception if no value match
+    * (def foo [x] (case x 5 "x is 5" 10 "x is 10"))
+    * (def foo [x] (case x 5 "x is 5" 10 "x is 10" "x isn't 5 or 10"))
+* Iteration for side effects
+  * dotimes
+    * evaluate expression n times; return nil
+    * (dotimes [i 3] (println i))
+  * doseq
+    * iterate over a sequence
+    * (doseq [n (range 3)] (println n))
+  * doseq with multiple bindings (like foreach)
+    * process all permutations
+    * (doseq [letter [:a :b] number (range 3)] (println [letter number])
+  * for
+  * list comprehension
+  * (for [letter [:a :b] number (range 3)] [letter number])
 
 ### Namespaces
