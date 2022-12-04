@@ -185,9 +185,16 @@
     * (doseq [n (range 3)] (println n))
   * doseq with multiple bindings (like foreach)
     * process all permutations
-    * (doseq [letter [:a :b] number (range 3)] (println [letter number])
+    * (doseq [letter [:a :b] number (range 3)] (println [letter number]) -> [:a 0] [:a 1] [:a 2] [:b 0] [:b 1] [:b 2]
   * for
-  * list comprehension
-  * (for [letter [:a :b] number (range 3)] [letter number])
+    * list comprehension
+    * (for [letter [:a :b] number (range 3)] [letter number]) -> ([:a 0] [:a 1] [:a 2] [:b 0] [:b 1] [:b 2])
+* Recursion
+  * loop and recur
+    * (loop [i 0] (if (< i 10) (recur (inc 1)) i))
+    * (defn increase [i] (if (< i 10) (recur (inc 1)) i))
+* Exceptions
+  * Exception Handling
+  * Throwing exceptions 
 
-### Namespaces
+### [Namespaces](https://clojure.org/guides/learn/namespaces)
